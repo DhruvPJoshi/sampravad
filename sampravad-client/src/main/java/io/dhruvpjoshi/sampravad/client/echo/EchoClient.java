@@ -26,14 +26,21 @@ public class EchoClient {
     ) {
       System.out.println("Client connected with " + hostname + " on "
         + port + " port");
-      String message;
-      while(true) {
+      String serverMessage, clientMessage;
+
+      System.out.print("Message: ");
+      clientMessage = msgScan.nextLine();
+      out.println(clientMessage);
+
+      while((serverMessage = in.readLine()) != null) {
+        System.out.println("Echo - " + serverMessage);
         System.out.print("Message: ");
-        message = msgScan.nextLine();
-        if("quit".equalsIgnoreCase(message) || "q".equalsIgnoreCase(message)) {
+        clientMessage = msgScan.nextLine();
+        if("quit".equalsIgnoreCase(clientMessage)
+          || "q".equalsIgnoreCase(clientMessage)) {
           break;
         }
-        out.println(message);
+        out.println(clientMessage);
       }
     } catch(IOException ioe) {
       System.err.println("Err: Failed to establish connection to server - "

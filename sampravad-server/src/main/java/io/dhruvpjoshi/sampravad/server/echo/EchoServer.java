@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import io.dhruvpjoshi.sampravad.server.echo.thread.EchoServerThread;
+
 public class EchoServer {
   public static void main(String[] ar) {
     if(ar.length != 1) {
@@ -15,31 +17,17 @@ public class EchoServer {
     }
 
     int port = Integer.parseInt(ar[0]);
+    boolean echoing = true;
 
     try(
       ServerSocket server = new ServerSocket(port);
     ) {
       System.out.println("Server listening on port: " + port);
-      acceptClientConnection(server);
-    } catch(IOException ioe) {
-      System.err.println("Err: Failed to start server on " + port + " port - "
-        + ioe.getMessage());
-    }
-  }
-
-  private static void acceptClientConnection(ServerSocket server) {
-    try(
-      Socket client = server.accept();
-      BufferedReader in = new BufferedReader(
-        new InputStreamReader(client.getInputStream()));
-      PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-    ) {
-      String clientMessage;
-      while((clientMessage = in.readLine()) != null) {
-        System.out.println("Echo - " + clientMessage);
+      while(echoing) {
+        new EchoServerThread(server.accept()).start();
       }
     } catch(IOException ioe) {
-      System.err.println("Err: An internal server error has occured - "
+      System.err.println("Err: Failed to start server on " + port + " port - "
         + ioe.getMessage());
     }
   }
