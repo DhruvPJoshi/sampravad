@@ -1,4 +1,4 @@
-package io.dhruvpjoshi.sampravad.client.echo;
+package io.dhruvpjoshi.soks.client.echo;
 
 import java.net.Socket;
 import java.io.BufferedReader;

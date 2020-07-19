@@ -1,4 +1,4 @@
-package io.dhruvpjoshi.sampravad.server.echo;
+package io.dhruvpjoshi.soks.server.echo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import io.dhruvpjoshi.sampravad.server.echo.thread.EchoServerThread;
+import io.dhruvpjoshi.soks.server.echo.thread.EchoServerThread;
 
 public class EchoServer {
   public static void main(String[] ar) {

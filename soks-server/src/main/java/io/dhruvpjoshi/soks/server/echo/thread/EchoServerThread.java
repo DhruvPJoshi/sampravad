@@ -1,4 +1,4 @@
-package io.dhruvpjoshi.sampravad.server.echo.thread;
+package io.dhruvpjoshi.soks.server.echo.thread;
 
 import java.net.Socket;
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ public class EchoServerThread extends Thread {
   private Socket client;
 
   public EchoServerThread(Socket client) {
-    super("SampravadEchoServerThread");
+    super("SoksEchoServerThread");
     this.client = client;
   }
 

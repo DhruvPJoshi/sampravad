@@ -1,4 +1,4 @@
-# Sampravad
+# soks
 
 A simple java based client-server chat application.
 
